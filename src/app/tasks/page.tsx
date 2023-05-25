@@ -38,7 +38,7 @@ function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     const form = event.target as HTMLFormElement
     const formData = new FormData(form)
     const task = formData.get('task') as string
-    dispatch(addTask(task))
+    dispatch(addTask({task}))
     form.reset()
     closeModal()
   }
@@ -81,8 +81,8 @@ function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
       <div className={styles.taskListContainer}>
         {
           tasks.map(task => (
-            <div className={styles.card} key={task}>
-              <p>{task}</p>
+            <div className={styles.card} key={task.task}>
+              <p>{task.task}</p>
             </div>
           ))
         }
